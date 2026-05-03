@@ -68,7 +68,7 @@ else:
 # ================================
 # 🔹 ML PREDICTION SECTION
 # ================================
-st.subheader("🏙️ AQI Prediction (ML Model)")
+st.subheader("🏙️ AQI Prediction")
 
 col1, col2, col3 = st.columns(3)
 
@@ -140,7 +140,7 @@ def get_city_name(lat, lon):
 # ================================
 # 🔹 LIVE AQI SECTION
 # ================================
-st.subheader("🌍 Live Air Quality (Real-Time)")
+st.subheader("🌍 Live Air Quality")
 
 lat = st.number_input("Latitude", value=23.2599)
 lon = st.number_input("Longitude", value=77.4126)
