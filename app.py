@@ -24,7 +24,10 @@ df = pd.read_csv("city_day.csv")
 # ================================
 # 🔹 TITLE
 # ================================
-st.title("🌆 Smart City Digital Twin - AQI System")
+st.markdown(
+    "<h2 style='white-space: nowrap;'>🌆 Smart City Digital Twin - AQI System</h2>",
+    unsafe_allow_html=True
+)
 
 # ================================
 # 🔹 CITY SELECTION
