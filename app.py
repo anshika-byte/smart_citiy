@@ -197,41 +197,43 @@ with col3:
     nox = st.number_input("NOx", 0.0, 300.0, 30.0)
     nh3 = st.number_input("NH3", 0.0, 200.0, 15.0)
 
-if st.button("🔮 Predict AQI Category"):
+col1, col2, col3 = st.columns([1,2,1])
 
-    input_data = pd.DataFrame([[
-        pm25, pm10, no2, co, so2, o3, no, nox, nh3
-    ]], columns=['PM2.5','PM10','NO2','CO','SO2','O3','NO','NOx','NH3'])
+with col2:
+    if st.button("🔮 Predict AQI Category"):
+        input_data = pd.DataFrame([[
+            pm25, pm10, no2, co, so2, o3, no, nox, nh3
+        ]], columns=['PM2.5','PM10','NO2','CO','SO2','O3','NO','NOx','NH3'])
 
-    input_scaled = scaler.transform(input_data)
+        input_scaled = scaler.transform(input_data)
 
-    prediction = model.predict(input_scaled)
+        prediction = model.predict(input_scaled)
 
-    result = le.inverse_transform(prediction.reshape(-1))
-    color = get_aqi_color(result[0])
-    
-    st.markdown(
-        f"""
-        <div style="
-            display:flex;
-            justify-content:center;
-            margin-top:15px;
-        ">
+        result = le.inverse_transform(prediction.reshape(-1))
+        color = get_aqi_color(result[0])
+
+        st.markdown(
+            f"""
             <div style="
-                background-color:{color};
-                color:white;
-                font-weight:bold;
-                padding:15px 30px;
-                border-radius:10px;
-                text-align:center;
-                font-size:18px;
+                display:flex;
+                justify-content:center;
+                margin-top:15px;
             ">
-            Predicted AQI Category: {result[0]}
+                <div style="
+                    background-color:{color};
+                    color:white;
+                    font-weight:bold;
+                    padding:15px 30px;
+                    border-radius:10px;
+                    text-align:center;
+                    font-size:18px;
+                ">
+                Predicted AQI Category: {result[0]}
+                </div>
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+            """,
+            unsafe_allow_html=True
+        )
 # ================================
 # 🔹 OPENWEATHER API CONFIG
 # ================================
