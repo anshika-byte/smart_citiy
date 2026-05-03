@@ -197,9 +197,9 @@ with col3:
     nox = st.number_input("NOx", 0.0, 300.0, 30.0)
     nh3 = st.number_input("NH3", 0.0, 200.0, 15.0)
 
-col1, col2, col3 = st.columns([1,2,1])
+col1, col2, col3 = st.columns([1,1,3])
 
-with col2:
+with col3:
     if st.button("🔮 Predict AQI Category"):
         input_data = pd.DataFrame([[
             pm25, pm10, no2, co, so2, o3, no, nox, nh3
